@@ -1,11 +1,9 @@
 const getUsersWithFriend = (users, friendName) => {
     const friendsArray = [];
     users.map(function (user) {
-        user.friends.map(function (friend) {
-            if (friend === friendName) {
-                friendsArray.push(user.name);
-            }
-        })
+        if(user.friends.some(friend => friend === friendName)) {
+            friendsArray.push(user.name)
+        }
     })
     return friendsArray;
     
