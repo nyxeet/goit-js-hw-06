@@ -4,10 +4,10 @@ const getNamesSortedByFriendsCount = users => {
     newUsers.sort(function (prevUser, nextUser) {
         return prevUser.friends.length - nextUser.friends.length;
         
-    })
-    newUsers.map(function (user) {
+    }).map(function (user) {
         namesUsers.push(user.name);
     })
+    
     return namesUsers;
 };
 
