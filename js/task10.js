@@ -1,7 +1,7 @@
 const getSortedUniqueSkills = users => {
     const getSkills = [];
     users.map(function (user) {
-        user.skills.map(function (skill) {
+        user.skills.forEach(function (skill) {
             if (!getSkills.some(newSkill => newSkill === skill)) {
                 getSkills.push(skill);
             }   

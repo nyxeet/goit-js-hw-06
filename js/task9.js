@@ -2,12 +2,10 @@ const getNamesSortedByFriendsCount = users => {
     const newUsers = [...users]; // чтобы не изменялся дефолтный массив
     const namesUsers = [];
     newUsers.sort(function (prevUser, nextUser) {
-        return prevUser.friends.length - nextUser.friends.length;
-        
+        return prevUser.friends.length - nextUser.friends.length; 
     }).map(function (user) {
         namesUsers.push(user.name);
     })
-    
     return namesUsers;
 };
 
