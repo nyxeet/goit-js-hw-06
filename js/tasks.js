@@ -9,6 +9,9 @@ const getUserNames = users => {
 console.log(getUserNames(users));
 // [ 'Moore Hensley', 'Sharlene Bush', 'Ross Vazquez', 'Elma Head', 'Carey Barr', 'Blackburn Dotson', 'Sheree Anthony' ]
 
+
+
+
 // Задание 2
 // Получить массив объектов пользователей по цвету глаз (поле eyeColor).
 
@@ -19,18 +22,14 @@ const getUsersWithEyeColor = (users, color) => {
 console.log(getUsersWithEyeColor(users, 'blue')); // [объект Moore Hensley, объект Sharlene Bush, объект Carey Barr]
 
 
+
+
+
 // Задание 3 
 // Получить массив имен пользователей по полу (поле gender).
 
 const getUsersWithGender = (users, gender) => {
-    const genderArray = [];
-    users.map(user => {
-        if (user.gender === gender) {
-            genderArray.push(user.name)
-        }
-    })
-    return genderArray;
-
+    return users.filter(user => user.gender === gender).map(user => user.name)
 };
 
 console.log(getUsersWithGender(users, 'male')); // [ 'Moore Hensley', 'Ross Vazquez', 'Carey Barr', 'Blackburn Dotson' ]
@@ -84,22 +83,24 @@ console.log(calculateTotalBalance(users)); // 20916
 
 const getUsersWithFriend = (users, friendName) => {
     return users.filter(user => user.friends.includes(friendName)).map(user => user.name);
+
+    // old version
+
+    // users.map(function (user) {	
+    //         if(user.friends.some(friend => friend === friendName)) {	
+    //             friendsArray.push(user.name)	
+    //         }	
+    //     })	
+    //     return friendsArray;	
+    // };
 };
 
 
 console.log(getUsersWithFriend(users, 'Briana Decker')); // [ 'Sharlene Bush', 'Sheree Anthony' ]
 console.log(getUsersWithFriend(users, 'Goldie Gentry')); // [ 'Elma Head', 'Sheree Anthony' ]
 
-// old version
 
-// users.map(function (user) {	
-//         if(user.friends.some(friend => friend === friendName)) {	
-//             friendsArray.push(user.name)	
-//         }	
-//     })	
-//     return friendsArray;	
 
-// };
 
 
 // Задание 9
@@ -107,17 +108,16 @@ console.log(getUsersWithFriend(users, 'Goldie Gentry')); // [ 'Elma Head', 'Sher
 
 const getNamesSortedByFriendsCount = users => {
     const newUsers = [...users]; // чтобы не изменялся дефолтный массив
-    const namesUsers = [];
-    newUsers.sort(function (prevUser, nextUser) {
+    return newUsers.sort(function (prevUser, nextUser) {
         return prevUser.friends.length - nextUser.friends.length; 
-    }).map(function (user) {
-        namesUsers.push(user.name);
-    })
-    return namesUsers;
+    }).map(user => user.name)
 };
 
 console.log(getNamesSortedByFriendsCount(users));
 // [ 'Moore Hensley', 'Sharlene Bush', 'Elma Head', 'Carey Barr', 'Blackburn Dotson', 'Sheree Anthony', 'Ross Vazquez' ]
+
+
+
 
 
 // Задание 10
